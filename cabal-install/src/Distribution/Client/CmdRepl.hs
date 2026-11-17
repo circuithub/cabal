@@ -426,11 +426,11 @@ targetedRepl
         -- Idelly we'd apply this constraint only on the closure of repl targets,
         -- but that would require another solver run for marginal advantages that
         -- will further shrink as 3.11 is adopted.
-        addMultiReplConstraint = addConstraintWhen multiReplEnabled $ requireCabal [3, 11] ConstraintSourceMultiRepl
+        addMultiReplConstraint = addConstraintWhen True $ requireCabal [3, 11] ConstraintSourceMultiRepl
 
         -- Similarly, if you use `--with-repl` then your version of `Cabal` needs to
         -- support the `--with-repl` flag.
-        addWithReplConstraint = addConstraintWhen withReplEnabled $ requireCabal [3, 15] ConstraintSourceWithRepl
+        addWithReplConstraint = addConstraintWhen True $ requireCabal [3, 15] ConstraintSourceWithRepl
 
         baseCtx' = addMultiReplConstraint $ addWithReplConstraint baseCtx
 
